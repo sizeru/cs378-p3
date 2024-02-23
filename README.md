@@ -1,3 +1,11 @@
+# About React
+The following are notes that I have written while trying to understand how React is meant to function.
+
+## The Files
+There are several files in both public and root directory that I am trying to understand
+* **public**: This folder contains the files hosted by React
+  - manifest.json: file used to initialize PWAs (progressive web apps).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
