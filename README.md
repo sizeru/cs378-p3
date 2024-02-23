@@ -1,10 +1,37 @@
-# About React
+# About Webdev
 The following are notes that I have written while trying to understand how React is meant to function.
+
+## Some buzzwords
+* npm - A software registry and package manager for javascript.
+* NodeJS - A JRE (javascript runtime environment). Created to run JS outside of the browser. While the browser will provide you with built in classes like document and window, Node will provide you with different built ins. [How NodeJS is different than the browser's JRE](https://nodejs.org/en/learn/getting-started/differences-between-nodejs-and-the-browser)
+* JRE - A javascript runtime environment. More than just an interpreter. A JRE provides a toolbox (built-in classes and methods) which help you write functionality in JavaScript much more effeciently. [more info](https://www.codecademy.com/article/introduction-to-javascript-runtime-environments)
+* react - a library (aka. a framework) for creating user interfaces.
+* react-dom - a react renderer for the web. Provides default components.
+* react-native - a react renderer for native applications. Provides default components.
+
+## Thoughts On Frontend & Backend Language Unification
+The idea of using the same language for both frontend and backend is **fundamentally flawed**. Frontend, which is displaying pages to a user, is a problem which requires a lot of dynamic behavior. A user must be able to log in on any device, and using any input method, be able to observe and navigate any page with several accessibilty options. This lends the solution to be a highly dynamic program. JavaScript is a valid solution.
+
+The backend is defined by protocols. The front end communicates to the backend by using pre-defined sequences of actions. These are fixed. These do not change often. The solution for this problem has no need to be highly dynamic. JavaScript is a silly choice for a solution. You are using a swiss army knife to chop down a tree.
+
+NodeJS can be used standalone - without a browser. This lends developers to use NodeJS to run both the frontend and the backend. While possible, this is a highly ineffecient choice. Tools which are more suited to writing exist for the job. All languages are just tools we use to program machines faster.
 
 ## The Files
 There are several files in both public and root directory that I am trying to understand
-* **public**: This folder contains the files hosted by React
+* public: This folder contains the files hosted by React
   - manifest.json: file used to initialize PWAs (progressive web apps).
+  - package.json: file used to contain all the libraries we are using to create our node-based web app.
+
+## My understanding of the web process
+Imagine you are visiting the website 'example.com' for the first time:
+* Browser sends request to get resource.
+* Server receives request, which MUST be processed by OS, software firewalls, parsed several times etc.
+* Server decides to send HTML file
+* Browser receives HTML file, and must parse it into a DOM, with error correction possible.
+* The DOM is used to decide rendering order
+
+**Questions:**
+* Why not just send the DOM over? Is it because of size? If the DOM is well optimized (as I assume it is), it should be much smaller than the HTML and CSS files used to describe it.
 
 # Getting Started with Create React App
 
