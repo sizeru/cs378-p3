@@ -39,7 +39,7 @@ function App() {
 		} else {
 			message += "Order Placed!\n"
 			for (const index of indices) {
-				message += "\t• " + quantities[index] + " " + menuItems[index].title + "\n"
+				message += "• " + quantities[index] + " " + menuItems[index].title + "\n"
 			}
 			message.trimEnd()
 		}
