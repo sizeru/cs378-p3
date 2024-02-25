@@ -13,25 +13,32 @@ function App() {
 	const [total, setTotal] = useState(0)
 
 	// subtotals is an array of states and setters
-	let subtotals = Array(menuItems.length).fill(useState(0))
+	let subtotals = Array(menuItems.length).fill(0)
 	let items = Array(menuItems.length)
 
   const updateTotal = () => {
     let sum = 0
-    for (let [subtotal, _] in subtotals) {
-      console.log("subtotal %d", subtotal)
-      sum += subtotal
+    for (let i = 0; i < menuItems.length; i++) {
+      sum += subtotals[i]
     }
+    // for (let i = 0; i < menuItems.length; i++) {
+    //   let [subtotal, _] = subtotals[i]
+    //   sum += Number(subtotal)
+    //   console.log("subtotal %d", subtotal)
+    // }
+    // for (let state in subtotals) {
+    //   state.0
+    //   sum += parseInt(subtotal, 10)
+    // }
     setTotal(sum)
   }
 
 
 	for (let i = 0; i < menuItems.length; i++) {
-		let [_, setSubtotal] = subtotals[i]
 		let item = menuItems[i]
 
-    const updateSubtotal = (num) => {
-      setSubtotal(num)
+    const updateSubtotal = (sub) => {
+      subtotals[i] = sub
       updateTotal()
     }
 

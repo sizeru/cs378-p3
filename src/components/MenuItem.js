@@ -8,15 +8,15 @@ const MenuItem = ({name, description, price, image_src, updateSubtotal}) => {
 	const [quantity, setQuantity] = useState(0)
 
 	const onAdd = () => {
-		setQuantity(quantity + 1)
-		updateSubtotal(quantity * price)
+		updateSubtotal((quantity+1) * price)
+		setQuantity(quantity + 1);
 	}
 
 	const onSub = () => {
 		if (quantity > 0) {
+			updateSubtotal((quantity-1) * price)
 			setQuantity(quantity - 1)
 		}
-		updateSubtotal(quantity * price)
 	}
 
 	return (
