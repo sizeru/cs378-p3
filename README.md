@@ -10,6 +10,8 @@ The following are notes that I have written while trying to understand how React
 * react-native - a react renderer for native applications. Provides default components.
 
 ## Thoughts On Frontend & Backend Language Unification
+NOTE: I am unfamiliar with frontend. This reaction is based on ignorance, not fact. But I am recording my first time feelings and thoughts.
+
 The idea of using the same language for both frontend and backend is **fundamentally flawed**. Frontend, which is displaying pages to a user, is a problem which requires a lot of dynamic behavior. A user must be able to log in on any device, and using any input method, be able to observe and navigate any page with several accessibilty options. This lends the solution to be a highly dynamic program. JavaScript is a valid solution.
 
 The backend is defined by protocols. The front end communicates to the backend by using pre-defined sequences of actions. These are fixed. These do not change often. The solution for this problem has no need to be highly dynamic. JavaScript is a silly choice for a solution. You are using a swiss army knife to chop down a tree.
