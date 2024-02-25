@@ -21,17 +21,22 @@ const MenuItem = ({name, description, price, image_src, updateSubtotal}) => {
 
 	return (
 		<div className="menu-item">
-			<img className="menu-item-image" src={`./images/${image_src}`}/>
-      <div className="menu-item-content">
-        <div className="description-box">
-          <p className="food-title">{name}</p>
-          <p className="food-description">{description}</p>
-        </div>
-        <div className="menu-item-price-box">
+			<img className="menu-item-image" src={`images/${image_src}`}/>
+			<div className="menu-item-content">
+				<div className="description-box">
+					<p className="food-title">{name}</p>
+					<p className="food-description">{description}</p>
+				</div>
+				<div className="menu-item-price-box">
 					<p>${price}</p>
-					<button className='menu-item-button'>Add</button> 
-        </div>
-      </div>
+					<div className="menu-item-quantity">
+						<button className='menu-item-quantity-button' onClick={onSub}>-</button> 
+						{quantity}
+						<button className='menu-item-quantity-button' onClick={onAdd}>+</button>
+
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
