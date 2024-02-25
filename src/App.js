@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import MenuItem from './components/MenuItem';
 import MenuHeader from './components/MenuHeader';
 
@@ -80,17 +81,30 @@ export const menuItems = [
 ];
 
 function App() {
+	// const [subtotals, setSubtotals] = useState([])
+	const [total, setTotal] = useState(0)
+
+	// subtotals is an array of states and setters
+	let subtotals = Array(menuItems.length).fill(useState(0))
+	let items = Array(menuItems.length)
+
+	for (let i = 0; i < menuItems.length; i++) {
+		let [subtotal, setSubtotal] = subtotals[i]
+		let item = menuItems[i]
+		items[i] = <MenuItem 
+			updateSubtotal={setSubtotal}
+			name={item.title} 
+			description={item.description}
+			price={item.price}
+			image_src={item.imageName}
+		/>
+	}
+
+
 	return (
 		<main>
 			<MenuHeader logo="./logo_full.jpg" flavor_text="Japanese Cuisine At UT"/>
-			{menuItems.map((item) => (
-				<MenuItem 
-					name={item.title} 
-					description={item.description}
-					price={item.price}
-					image_src={item.imageName}
-				/>
-			))}
+			{items}
 			{/* Display menu items dynamicaly here by iterating over the provided menuItems */}
 			{/* <MenuItem .title} /> Example for how to use a component */}
 		</main>

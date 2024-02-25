@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "P3 Menu",
+  "name": "Sp24 HCI P3 Menu",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,7 +13,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
