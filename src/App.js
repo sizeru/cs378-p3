@@ -1,62 +1,59 @@
 import './App.css';
 import menuItems from './items.json';
-import { useState } from 'react';
+import { React, useState } from 'react';
 import MenuItem from './components/MenuItem';
 import MenuHeader from './components/MenuHeader';
-
+import MenuFooter from './components/MenuFooter';
 
 // Menu data. An array of objects where each object represents a menu item. Each menu item has an id, title, description, image name, and price.
 // You can use the image name to get the image from the images folder.
 
-
 function App() {
 	const [total, setTotal] = useState(0)
-
-	// subtotals is an array of states and setters
-	let subtotals = Array(menuItems.length).fill(0)
+	let [quantities, setQuantities] = useState(Array(menuItems.length).fill(0))
 	let items = Array(menuItems.length)
 
-  const updateTotal = () => {
+  const updateTotal = (quantities) => {
     let sum = 0
     for (let i = 0; i < menuItems.length; i++) {
-      sum += subtotals[i]
+      sum += quantities[i] * menuItems[i].price
     }
-    // for (let i = 0; i < menuItems.length; i++) {
-    //   let [subtotal, _] = subtotals[i]
-    //   sum += Number(subtotal)
-    //   console.log("subtotal %d", subtotal)
-    // }
-    // for (let state in subtotals) {
-    //   state.0
-    //   sum += parseInt(subtotal, 10)
-    // }
     setTotal(sum)
   }
 
+  const reset = () => {
+    setQuantities(Array(menuItems.length).fill(0))
+  }
+
+  const order = () => {
+
+  }
 
 	for (let i = 0; i < menuItems.length; i++) {
 		let item = menuItems[i]
 
-    const updateSubtotal = (sub) => {
-      subtotals[i] = sub
-      updateTotal()
+    const update = (quantity) => {
+      let temp = quantities
+      temp[i] = quantity
+      setQuantities(temp)
+      updateTotal(temp)
     }
 
 		items[i] = <MenuItem
-			updateSubtotal={updateSubtotal}
 			name={item.title} 
+      quantity={quantities[i]}
 			description={item.description}
 			price={item.price}
 			image_src={item.imageName}
+      setQuantity={update}
 		/>
 	}
-
 
 	return (
 		<main>
 			<MenuHeader logo="./logo_full.jpg" flavor_text="Japanese Cuisine At UT"/>
 			{items}
-      <h1>TOTAL: {total}</h1>
+      <MenuFooter total={total} onReset={reset} onOrder={order}/>
 			{/* Display menu items dynamicaly here by iterating over the provided menuItems */}
 			{/* <MenuItem .title} /> Example for how to use a component */}
 		</main>
