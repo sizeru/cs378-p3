@@ -81,9 +81,7 @@ h2 {
 	border-radius: 20px;
 	margin: 1rem;
 	padding: 0 1rem;
-	background-color: #ddd;
-	color: black;
-	border: 0.2rem outset var(--burnt-orange);
+	border: 0.1rem outset var(--burnt-orange);
 	box-shadow: -5px 5px 5px 0 #00000022;
 }
 
@@ -92,6 +90,8 @@ h2 {
 	width: 1.6rem;
 	height: 1.6rem;
 	margin: 1rem;
+	border: 0.1rem outset var(--burnt-orange);
+	box-shadow: -5px 5px 5px 0 #00000022;
 }
 
 .cedarville-cursive-regular {
@@ -121,7 +121,9 @@ h2 {
 
 .menu-footer {
 	margin: 0;
+	padding: 0;
 	font-size: 2rem;
+	margin: var(--default-margin);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -129,7 +131,7 @@ h2 {
 }
 
 .menu-footer-buttons {
-	margin: 1rem;
+	margin: 1rem 0;
 	display: flex;
 	justify-content: center;
 }

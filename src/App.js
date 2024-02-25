@@ -12,40 +12,58 @@ function App() {
 	let [quantities, setQuantities] = useState(Array(menuItems.length).fill(0))
 	let items = Array(menuItems.length)
 
-  const updateTotal = (quantities) => {
-    let sum = 0
-    for (let i = 0; i < menuItems.length; i++) {
-      sum += quantities[i] * menuItems[i].price
-    }
-    setTotal(sum)
-  }
+	const updateTotal = (quantities) => {
+		let sum = 0
+		for (let i = 0; i < menuItems.length; i++) {
+			sum += quantities[i] * menuItems[i].price
+		}
+		setTotal(sum)
+	}
 
-  const reset = () => {
-    setQuantities(Array(menuItems.length).fill(0))
-    updateTotal(Array(menuItems.length).fill(0))
-  }
+	const reset = () => {
+		setQuantities(Array(menuItems.length).fill(0))
+		updateTotal(Array(menuItems.length).fill(0))
+	}
 
-  const order = () => {
+	const order = () => {
+		let indices = []
+		for (let i = 0; i < quantities.length; i++) {
+			if (quantities[i] !== 0) {
+				indices.push(i)
+			}
+		}
 
-  }
+		let message = ""
+		if (indices.length === 0) {
+			message = "You have not selected anything to order"
+		} else {
+			message += "Order Placed!\n"
+			for (const index of indices) {
+				message += "\t• " + quantities[index] + " " + menuItems[index].title + "\n"
+			}
+			message.trimEnd()
+		}
+
+		window.alert(message)
+	}
 
 	for (let i = 0; i < menuItems.length; i++) {
 		let item = menuItems[i]
 
-    const update = (quantity) => {
-      let temp = quantities
-      temp[i] = quantity
-      setQuantities(temp)
-      updateTotal(temp)
-    }
+		const update = (quantity) => {
+			let temp = quantities
+			temp[i] = quantity
+			setQuantities(temp)
+			updateTotal(temp)
+		}
 
 		items[i] = <MenuItem
 			name={item.title} 
-      quantity={quantities[i]}
+			quantity={quantities[i]}
 			description={item.description}
 			price={item.price}
 			image_src={item.imageName}
-      setQuantity={update}
+			setQuantity={update}
 		/>
 	}
 
@@ -53,7 +71,7 @@ function App() {
 		<main>
 			<MenuHeader logo="./logo_full.jpg" flavor_text="Japanese Cuisine At UT"/>
 			{items}
-      <MenuFooter total={total} onReset={reset} onOrder={order}/>
+			<MenuFooter total={total} onReset={reset} onOrder={order}/>
 			{/* Display menu items dynamicaly here by iterating over the provided menuItems */}
 			{/* <MenuItem .title} /> Example for how to use a component */}
 		</main>
