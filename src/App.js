@@ -1,4 +1,3 @@
-import './App.css';
 import menuItems from './items.json';
 import { React, useState } from 'react';
 import MenuItem from './components/MenuItem';
@@ -23,6 +22,7 @@ function App() {
 
   const reset = () => {
     setQuantities(Array(menuItems.length).fill(0))
+    updateTotal(Array(menuItems.length).fill(0))
   }
 
   const order = () => {

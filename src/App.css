@@ -79,7 +79,7 @@ h2 {
 
 .menu-item-button {
 	border-radius: 20px;
-	margin: 0;
+	margin: 1rem;
 	padding: 0 1rem;
 	background-color: #ddd;
 	color: black;
@@ -122,4 +122,14 @@ h2 {
 .menu-footer {
 	margin: 0;
 	font-size: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+
+.menu-footer-buttons {
+	margin: 1rem;
+	display: flex;
+	justify-content: center;
 }
