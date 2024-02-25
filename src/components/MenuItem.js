@@ -22,9 +22,9 @@ const MenuItem = ({name, description, price, image_src, quantity, setQuantity}) 
 					<p className='food-description'>{description}</p>
 				</div>
 				<div className='menu-item-price-box'>
-					<p>${price}</p>
+					<p>${price.toFixed(2)}</p>
 					<div className='menu-item-quantity'>
-						<button className='menu-item-quantity-button' onClick={onSub}>-</button> 
+						<button className='menu-item-quantity-button' onClick={onSub}>−</button> 
 						{quantity}
 						<button className='menu-item-quantity-button' onClick={onAdd}>+</button>
 					</div>
